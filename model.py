@@ -8,7 +8,6 @@ class Journal(SQLModel, table=True):
     name: str
     impact_factor: float
 
-
 class Article(SQLModel, table=True):
     id: int = Field(primary_key=True)
     provenance: str
@@ -47,10 +46,8 @@ class Interaction(SQLModel, table=True):
     polarity: bool
     directed: bool
 
+def build_models():
+    sql_url = "postgresql://postgres:postgres@localhost:5432/graphviz_sampledb"
 
-
-sql_url = "postgresql://postgres:postgres@localhost:5432/graphviz_sampledb"
-
-engine = create_engine(sql_url, echo=True)
-
-SQLModel.metadata.create_all(engine)
+    engine = create_engine(sql_url, echo=True)
+    SQLModel.metadata.create_all(engine)
