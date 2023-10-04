@@ -42,7 +42,7 @@ class Participant_Description(SQLModel, table=True):
 class Interaction(SQLModel, table=True):
     id: int = Field(primary_key=True)
     controller: int = Field(foreign_key="participant.id")
-    controlled: int = Field(foreign_key="evidence.id")
+    controlled: int = Field(foreign_key="participant.id")
     polarity: bool
     directed: bool
 
